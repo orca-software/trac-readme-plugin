@@ -34,10 +34,9 @@ class ReadmeRendererPlugin(Component):
         if template != 'browser.html':
             return stream
         dir_listing = bool(data.get('dir'))
-        if dir_listing or data['path'].endswith('.md'):
+        if dir_listing:
             add_script(req, 'readme/marked.js')
             add_script(req, 'readme/readme.js')
-        if dir_listing:
             stream = self._render_readme(req, stream, data)
         return stream
 
